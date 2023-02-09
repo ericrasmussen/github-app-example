@@ -15,17 +15,21 @@ def bot():
     """
     # Get the event payload
     payload = request.json
+
+    owner = payload["repository"]["owner"]["login"]
+    repository = payload["repository"]["name"]
+
     gh = GHConnect(
         app_id=app.config["app_id"],
         cert_path=app.config["cert"],
-        org=payload["repository"]["owner"]["login"],
-        repo=payload["repository"]["name"],
+        org=owner,
+        repo=repository,
     )
 
     # advanced logging mechanism to send data to stdout
     print(payload)
 
-    current_repos = gh.get_repo_list()
+    current_repos = gh.get_repo_list(user=owner)
     for repo in current_repos:
         print(repo)
 

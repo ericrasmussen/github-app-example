@@ -4,8 +4,10 @@ and invoked with:
 
 ```
 $ poetry install
-$ ghlisten my-cert.pem <my numeric GitHub app id> <port to listen on>
+$ poetry run ghlisten my-cert.pem <my numeric GitHub app id> <port to listen on>
 ```
+
+See https://python-poetry.org/ for information on installing and using `poetry`.
 
 See https://docs.github.com/en/developers/apps/building-github-apps/creating-a-github-app
 for steps on creating an app and generating the cert.
